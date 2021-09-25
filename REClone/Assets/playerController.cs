@@ -6,7 +6,9 @@ public class playerController : MonoBehaviour
 {
     private CharacterController rb;
 
-    public float speed = 6;
+    public float speed = 4;
+
+    public float fallSpeed = -7;
 
     public float vSpeed = 0;
 
@@ -24,10 +26,11 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        vSpeed = gravity * Time.deltaTime;
 
         Vector3 moveDir;
 
-        Vector3 vel = transform.forward * Input.GetAxis("Vertical") * speed;           
+        Vector3 vel = transform.up * -10;           
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
 
@@ -40,7 +43,6 @@ public class playerController : MonoBehaviour
             vSpeed = 0;
         }
 
-        vSpeed = gravity * Time.deltaTime;
 
         rb.Move(vel * Time.deltaTime);
     }
