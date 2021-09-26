@@ -53,11 +53,13 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
-    <Compile Include="Assets\playerController.cs" />
-    <Compile Include="Assets\GameEvents.cs" />
+    <Compile Include="Assets\camFollow.cs" />
     <Compile Include="Assets\CamSwitch.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\GameEvents.cs" />
+    <Compile Include="Assets\playerController.cs" />
+    <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\musicManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
