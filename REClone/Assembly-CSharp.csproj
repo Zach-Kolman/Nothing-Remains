@@ -55,11 +55,11 @@
   <ItemGroup>
     <Compile Include="Assets\camFollow.cs" />
     <Compile Include="Assets\CamSwitch.cs" />
+    <Compile Include="Assets\musicManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\GameEvents.cs" />
     <Compile Include="Assets\playerController.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
-    <Compile Include="Assets\musicManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

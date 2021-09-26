@@ -6,7 +6,9 @@ public class playerController : MonoBehaviour
 {
     private CharacterController rb;
 
-    public float speed = 4;
+    //public float baseSpeed = 3;
+
+    public float speed = 3;
 
     public float fallSpeed = -7;
 
@@ -19,19 +21,28 @@ public class playerController : MonoBehaviour
     public Animator animator;
 
     bool isAiming = false;
+
+    bool isWalking = false;
+
+    bool isSprinting = false;
+
+    public float sprintSpeed;
     // Start is called before the first frame update
     void Start()
     {
+
+        sprintSpeed = 5;
 
         rb = GetComponent<CharacterController>();
 
         animator = GetComponent<Animator>();
 
+
     }
 
     void AimDown()
     {
-        if (Input.GetButton("Aim"))
+        if (isAiming)
         {
 
             Debug.Log("hi");
@@ -43,17 +54,28 @@ public class playerController : MonoBehaviour
 
         else
         {
-            speed = 4;
+            speed = 3;
         }
 
        
         animator.SetBool("isAiming", isAiming);
     }
 
+    void Sprint()
+    {
+        if (!isAiming && isSprinting)
+        {
+            speed = 5;
+        }
+    }
+    
+
     // Update is called once per frame
     void Update()
     {
         isAiming = Input.GetButton("Aim");
+
+        isSprinting = Input.GetButton("Sprint");
 
         vSpeed = gravity * Time.deltaTime;
 
@@ -62,6 +84,8 @@ public class playerController : MonoBehaviour
         Vector3 vel = transform.up * -10;
 
         AimDown();
+
+        Sprint();
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
 
@@ -77,7 +101,21 @@ public class playerController : MonoBehaviour
 
         rb.Move(vel * Time.deltaTime);
 
-        Debug.Log(isAiming);
+        Debug.Log(speed);
+
+        animator.SetBool("isWalking", isWalking);
+
+        animator.SetBool("isSprinting", isSprinting);
+
+        if(Input.GetAxis("Vertical") != 0)
+        {
+            isWalking = true;
+        }
+
+        else
+        {
+            isWalking = false;
+        }
     }
 
 
