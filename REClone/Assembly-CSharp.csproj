@@ -60,6 +60,8 @@
     <Compile Include="Assets\GameEvents.cs" />
     <Compile Include="Assets\playerController.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\camFollowandPan.cs" />
+    <Compile Include="Assets\CamSwitchAndPan.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
