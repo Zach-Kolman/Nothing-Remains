@@ -26,6 +26,10 @@ public class playerController : MonoBehaviour
 
     bool isSprinting = false;
 
+    bool isFiring = false;
+
+    bool isPlaying = false;
+
     public float sprintSpeed;
 
     public bool isMoving;
@@ -35,6 +39,10 @@ public class playerController : MonoBehaviour
     public AudioClip footSFX1;
 
     public AudioClip footSFX2;
+
+    public AudioClip fireSound;
+
+    bool startPlaying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,6 +95,38 @@ public class playerController : MonoBehaviour
             isSprinting = false;
         }
     }
+
+    IEnumerator SetPlaying()
+    {
+        startPlaying = true;
+        isPlaying = true;
+        yield return new WaitForSeconds(0.25f);
+        isPlaying = false;
+        startPlaying = false;
+       
+        yield return 0;
+    }
+    void Fire()
+    {
+        StartCoroutine("SetPlaying");
+        if (startPlaying)
+        {
+            
+            if ( isAiming)
+            {
+                   source.clip = fireSound;
+                   source.PlayOneShot(fireSound);
+                    //animator.Play("Firing", -1);
+
+                    // source.Stop();
+            }
+        }
+       
+
+       
+    }
+
+   
     
 
     // Update is called once per frame
@@ -95,6 +135,8 @@ public class playerController : MonoBehaviour
         isAiming = Input.GetButton("Aim");
 
         isSprinting = Input.GetButton("Sprint");
+
+        isFiring = Input.GetButtonDown("FireMain");
 
         vSpeed = gravity * Time.deltaTime;
 
@@ -105,6 +147,8 @@ public class playerController : MonoBehaviour
         AimDown();
 
         Sprint();
+
+        //Fire();
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
 
@@ -126,6 +170,8 @@ public class playerController : MonoBehaviour
 
         animator.SetBool("isSprinting", isSprinting);
         animator.SetBool("isMoving", isMoving);
+
+        animator.SetBool("isFiring", isFiring);
 
         if(Input.GetAxis("Vertical") != 0)
         {
