@@ -6,6 +6,8 @@ public class camFollowandPan : MonoBehaviour
 {
     private Transform player;
 
+    public GameObject playerRef;
+
     private Transform offsetPos;
 
     public Vector3 moveAxis;
@@ -21,45 +23,46 @@ public class camFollowandPan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        player = playerRef.transform;
         offsetPos = gameObject.transform;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = player.transform.position - offsetPos.transform.position;
+        camPan();
+    }
 
-        position = player.transform.position + direction;
+    private void FixedUpdate()
+    {
+        
         CamFollow();
         camPan();
+        Debug.Log(direction);
     }
 
     void CamFollow()
     {
-
         if (!inFollowRange)
         {
             transform.LookAt(player);
-          
         }
-
     }
 
-    void camPan()
+    public void camPan()
     {
-        if (inFollowRange)
+        
+        if(inFollowRange)
         {
-
-
+            position = player.position - direction;
             transform.position = position;
-            Debug.Log("hey");
         }
+    }
 
-        else
-        {
-            transform.LookAt(player);
-        }
+    public void setDist()
+    {
+        direction = player.position - offsetPos.position;
     }
 
 }

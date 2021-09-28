@@ -26,6 +26,7 @@ public class CamSwitchAndPan : MonoBehaviour
         if (inRange)
         {
             mamaCam.GetComponent<camFollowandPan>().inFollowRange = true;
+            mamaCam.GetComponent<camFollowandPan>().setDist();
         }
 
     }
