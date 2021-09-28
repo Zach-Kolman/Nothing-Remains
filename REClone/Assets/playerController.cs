@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour
 
     //public float baseSpeed = 3;
 
-    public float speed = 3;
+    public float speed = 2;
 
     public float fallSpeed = -7;
 
@@ -31,7 +31,7 @@ public class playerController : MonoBehaviour
     void Start()
     {
 
-        sprintSpeed = 5;
+        sprintSpeed = 3.5f;
 
         rb = GetComponent<CharacterController>();
 
@@ -54,7 +54,7 @@ public class playerController : MonoBehaviour
 
         else
         {
-            speed = 3;
+            speed = 2;
         }
 
        
@@ -65,7 +65,7 @@ public class playerController : MonoBehaviour
     {
         if (!isAiming && isSprinting)
         {
-            speed = 5;
+            speed = 3.5f;
         }
     }
     
