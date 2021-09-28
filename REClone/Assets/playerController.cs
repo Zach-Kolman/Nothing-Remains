@@ -27,9 +27,12 @@ public class playerController : MonoBehaviour
     bool isSprinting = false;
 
     public float sprintSpeed;
+
+    public bool isMoving;
     // Start is called before the first frame update
     void Start()
     {
+        isMoving = false;
 
         sprintSpeed = 3.5f;
 
@@ -47,6 +50,7 @@ public class playerController : MonoBehaviour
 
             Debug.Log("hi");
             isAiming = true;
+            isSprinting = false;
             Debug.Log("thing did");
             speed = 0;
 
@@ -63,9 +67,16 @@ public class playerController : MonoBehaviour
 
     void Sprint()
     {
-        if (!isAiming && isSprinting)
+        if (isSprinting && speed > 0)
         {
             speed = 3.5f;
+            isSprinting = true;
+
+        }
+
+        else
+        {
+            isSprinting = false;
         }
     }
     
@@ -106,17 +117,50 @@ public class playerController : MonoBehaviour
         animator.SetBool("isWalking", isWalking);
 
         animator.SetBool("isSprinting", isSprinting);
+        animator.SetBool("isMoving", isMoving);
 
         if(Input.GetAxis("Vertical") != 0)
         {
-            isWalking = true;
+                isMoving = true;
+                if(speed < 3)
+                {
+                    isWalking = true;
+                }
+            
+
+            if(speed <= 0)
+            {
+                isMoving = false;
+            }
+            
         }
 
         else
         {
             isWalking = false;
+            isMoving = false;
         }
-    }
 
+        if (Input.GetAxis("Vertical") != 0)
+        {
+            if(speed > 3)
+            {
+               isSprinting = true;
+            }
+           
+        }
+
+        else
+        {
+            isSprinting = false;
+        }
+
+        if(Input.GetAxis("Vertical") == 0)
+        {
+            isSprinting = false;
+        }
+
+        Debug.Log(isMoving);
+    }
 
 }
