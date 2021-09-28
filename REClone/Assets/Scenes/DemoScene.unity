@@ -6436,7 +6436,7 @@ MonoBehaviour:
   speed: 2
   fallSpeed: -7
   vSpeed: 0
-  turnSpeed: 90
+  turnSpeed: 45
   gravity: 9.8
   animator: {fileID: 0}
   sprintSpeed: 0
@@ -6444,6 +6444,7 @@ MonoBehaviour:
   footSFX1: {fileID: 8300000, guid: e2f42e98c70c4914da8b6e9e9d5e89da, type: 3}
   footSFX2: {fileID: 8300000, guid: 784947cf52806cf4795c22e2445083a3, type: 3}
   fireSound: {fileID: 8300000, guid: 0820fc4e1387e094cb2d5858e1ca4562, type: 3}
+  fireSpeed: 1
 --- !u!143 &1764156696
 CharacterController:
   m_ObjectHideFlags: 0

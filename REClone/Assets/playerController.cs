@@ -43,6 +43,10 @@ public class playerController : MonoBehaviour
     public AudioClip fireSound;
 
     bool startPlaying = false;
+
+    public float fireSpeed;
+
+    private bool movingBack = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -100,9 +104,10 @@ public class playerController : MonoBehaviour
     {
         startPlaying = true;
         isPlaying = true;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         isPlaying = false;
         startPlaying = false;
+        turnSpeed = 45;
        
         yield return 0;
     }
@@ -111,15 +116,20 @@ public class playerController : MonoBehaviour
         StartCoroutine("SetPlaying");
         if (startPlaying)
         {
-            
+
+            source.clip = fireSound;
+            source.PlayOneShot(fireSound);
+            turnSpeed = 0;
             if ( isAiming)
             {
-                   source.clip = fireSound;
-                   source.PlayOneShot(fireSound);
+                //turnSpeed = 0;
+                //source.clip = fireSound;
+                //source.PlayOneShot(fireSound);
                     //animator.Play("Firing", -1);
 
                     // source.Stop();
             }
+
         }
        
 
@@ -148,6 +158,8 @@ public class playerController : MonoBehaviour
 
         Sprint();
 
+        CheckIfBack();
+
         //Fire();
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
@@ -172,6 +184,10 @@ public class playerController : MonoBehaviour
         animator.SetBool("isMoving", isMoving);
 
         animator.SetBool("isFiring", isFiring);
+
+        animator.SetFloat("fireSpeed", fireSpeed);
+
+        animator.SetBool("movingBack", movingBack);
 
         if(Input.GetAxis("Vertical") != 0)
         {
@@ -228,5 +244,20 @@ public class playerController : MonoBehaviour
         source.clip = footSFX2;
         source.Play();
     }
+
+    void CheckIfBack()
+    {
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            movingBack = false;
+        }
+
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            movingBack = true;
+            speed = 1;
+        }
+    }
+
 
 }
