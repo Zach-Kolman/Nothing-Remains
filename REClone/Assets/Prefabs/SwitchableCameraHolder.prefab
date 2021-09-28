@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 842726568994319356}
   - component: {fileID: 842726568994319353}
   - component: {fileID: 842726568994319352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SwitchableCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -214,9 +214,9 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 128
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

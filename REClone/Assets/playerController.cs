@@ -29,6 +29,12 @@ public class playerController : MonoBehaviour
     public float sprintSpeed;
 
     public bool isMoving;
+
+    private AudioSource source;
+
+    public AudioClip footSFX1;
+
+    public AudioClip footSFX2;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +45,8 @@ public class playerController : MonoBehaviour
         rb = GetComponent<CharacterController>();
 
         animator = GetComponent<Animator>();
+
+        source = gameObject.GetComponent<AudioSource>();
 
 
     }
@@ -161,6 +169,18 @@ public class playerController : MonoBehaviour
         }
 
         Debug.Log(isMoving);
+    }
+
+    public void Footstep1()
+    {
+        source.clip = footSFX1;
+        source.Play();
+    }
+
+    public void Footstep2()
+    {
+        source.clip = footSFX2;
+        source.Play();
     }
 
 }
