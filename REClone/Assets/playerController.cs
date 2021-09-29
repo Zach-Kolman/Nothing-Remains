@@ -6,56 +6,38 @@ public class playerController : MonoBehaviour
 {
     private CharacterController rb;
 
-    //public float baseSpeed = 3;
-
     public float speed = 2;
-
     public float fallSpeed = -7;
-
     public float vSpeed = 0;
-
     public float turnSpeed = 90f;
-
     public float gravity = 9.8f;
+    public float sprintSpeed;
+    public float fireSpeed;
+    public float gunshotVolumeScale;
 
     public Animator animator;
 
     bool isAiming = false;
-
     bool isWalking = false;
-
     bool isSprinting = false;
-
     bool isFiring = false;
-
     bool isPlaying = false;
-
-    public float sprintSpeed;
-
     public bool isMoving;
+    private bool movingBack = false;
+    bool startPlaying = false;
 
     private AudioSource source;
 
     public AudioClip footSFX1;
-
     public AudioClip footSFX2;
-
     public AudioClip fireSound;
-
-    bool startPlaying = false;
-
-    public float fireSpeed;
-
-    private bool movingBack = false;
 
     public List<Collider> mobs;
 
-    
     // Start is called before the first frame update
     void Start()
     {
-        
-        
+
         isMoving = false;
 
         sprintSpeed = 3.5f;
@@ -71,11 +53,15 @@ public class playerController : MonoBehaviour
     {
         if (isAiming)
         {
+            if(mobs.Count > 0)
+            {
+                gameObject.GetComponent<LookAtEnemy>().lookAtMob();
+            }
             isSprinting = false;
             speed = 0;
             turnSpeed = 0;
-            Transform closestMob = GetClosestEnemy();
-            transform.rotation = Quaternion.LookRotation(closestMob.position);
+            movingBack = false;
+            
         }
 
         else
@@ -88,7 +74,7 @@ public class playerController : MonoBehaviour
         animator.SetBool("isAiming", isAiming);
     }
 
-    Transform GetClosestEnemy()
+    public Transform GetClosestEnemy()
     {
         Transform tMin = null;
         float minDist = Mathf.Infinity;
@@ -143,7 +129,7 @@ public class playerController : MonoBehaviour
         {
 
             source.clip = fireSound;
-            source.PlayOneShot(fireSound);
+            source.PlayOneShot(fireSound, gunshotVolumeScale);
             turnSpeed = 0;
             if ( isAiming)
             {
@@ -167,7 +153,6 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         mobs = GetComponentInChildren<CheckMobsInRange>().mobsInRange;
 
         isAiming = Input.GetButton("Aim");
@@ -282,8 +267,12 @@ public class playerController : MonoBehaviour
 
         if (Input.GetAxis("Vertical") < 0)
         {
-            movingBack = true;
-            speed = 1;
+            if(!isAiming)
+            {
+                movingBack = true;
+                speed = 1;
+            }
+               
         }
     }
 

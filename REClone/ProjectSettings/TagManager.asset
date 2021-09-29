@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Mob
+  - debug
   layers:
   - Default
   - TransparentFX

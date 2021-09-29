@@ -477,6 +477,7 @@ GameObject:
   - component: {fileID: 112742760}
   - component: {fileID: 112742759}
   - component: {fileID: 112742763}
+  - component: {fileID: 112742764}
   m_Layer: 0
   m_Name: Mob
   m_TagString: Mob
@@ -579,6 +580,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &112742764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112742758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8583b8b4b8a1ec42a46ac17a40fee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 919132148383419383}
 --- !u!1 &120821632
 GameObject:
   m_ObjectHideFlags: 0
@@ -3518,6 +3532,7 @@ GameObject:
   - component: {fileID: 896894127}
   - component: {fileID: 896894126}
   - component: {fileID: 896894130}
+  - component: {fileID: 896894131}
   m_Layer: 0
   m_Name: Mob (2)
   m_TagString: Mob
@@ -3620,6 +3635,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &896894131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896894125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8583b8b4b8a1ec42a46ac17a40fee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 919132148383419383}
 --- !u!1 &907948397
 GameObject:
   m_ObjectHideFlags: 0
@@ -4323,6 +4351,7 @@ GameObject:
   - component: {fileID: 1000879722}
   - component: {fileID: 1000879721}
   - component: {fileID: 1000879725}
+  - component: {fileID: 1000879726}
   m_Layer: 0
   m_Name: Mob (1)
   m_TagString: Mob
@@ -4425,6 +4454,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1000879726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000879720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8583b8b4b8a1ec42a46ac17a40fee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 919132148383419383}
 --- !u!1 &1031672730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: af03877e37009f74da14159888f4ce51, type: 3}
@@ -7982,6 +8024,7 @@ GameObject:
   - component: {fileID: 2120585761}
   - component: {fileID: 2120585760}
   - component: {fileID: 2120585764}
+  - component: {fileID: 2120585765}
   m_Layer: 0
   m_Name: Mob (3)
   m_TagString: Mob
@@ -8084,6 +8127,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2120585765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120585759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8583b8b4b8a1ec42a46ac17a40fee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 919132148383419383}
 --- !u!4 &2127200482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 182e464e5ec40fb4dab5467cce99cc61, type: 3}
@@ -8156,6 +8212,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7465139066607387152, guid: 935371b97eda9e147b7d6e47df815019, type: 3}
   m_PrefabInstance: {fileID: 7735189355518446055}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &919132148383419390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148383419383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0637f8260de921645aa42379ae8b9dd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closestMob: {fileID: 0}
+  stepCount: 5
 --- !u!1001 &7735189355518446055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8166,6 +8236,14 @@ PrefabInstance:
     - target: {fileID: 7465139066607387152, guid: 935371b97eda9e147b7d6e47df815019, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735189353792122096, guid: 935371b97eda9e147b7d6e47df815019, type: 3}
+      propertyPath: fireSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735189353792122096, guid: 935371b97eda9e147b7d6e47df815019, type: 3}
+      propertyPath: gunshotVolumeScale
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7841418692183595178, guid: 935371b97eda9e147b7d6e47df815019, type: 3}
       propertyPath: m_RootOrder
