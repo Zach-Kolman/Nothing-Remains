@@ -47,9 +47,15 @@ public class playerController : MonoBehaviour
     public float fireSpeed;
 
     private bool movingBack = false;
+
+    public List<Collider> mobs;
+
+    
     // Start is called before the first frame update
     void Start()
     {
+        
+        
         isMoving = false;
 
         sprintSpeed = 3.5f;
@@ -59,30 +65,49 @@ public class playerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         source = gameObject.GetComponent<AudioSource>();
-
-
     }
 
     void AimDown()
     {
         if (isAiming)
         {
-
-            Debug.Log("hi");
-            isAiming = true;
             isSprinting = false;
-            Debug.Log("thing did");
             speed = 0;
-
+            turnSpeed = 0;
+            Transform closestMob = GetClosestEnemy();
+            transform.rotation = Quaternion.LookRotation(closestMob.position);
         }
 
         else
         {
             speed = 2;
+            turnSpeed = 45;
         }
 
        
         animator.SetBool("isAiming", isAiming);
+    }
+
+    Transform GetClosestEnemy()
+    {
+        Transform tMin = null;
+        float minDist = Mathf.Infinity;
+        Vector3 currentPos = transform.position;
+        foreach(Collider trans in mobs)
+        {
+            Debug.Log("we got it");
+            float dist = Vector3.Distance(trans.transform.position, currentPos);
+            if(dist < minDist)
+            {
+                tMin = trans.transform;
+                minDist = dist;
+                
+            }
+        }
+
+        Debug.Log(tMin);
+        return tMin;
+        
     }
 
     void Sprint()
@@ -142,6 +167,9 @@ public class playerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        mobs = GetComponentInChildren<CheckMobsInRange>().mobsInRange;
+
         isAiming = Input.GetButton("Aim");
 
         isSprinting = Input.GetButton("Sprint");
