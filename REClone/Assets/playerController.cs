@@ -17,10 +17,10 @@ public class playerController : MonoBehaviour
 
     public Animator animator;
 
-    bool isAiming = false;
+    public bool isAiming = false;
     bool isWalking = false;
     bool isSprinting = false;
-    bool isFiring = false;
+    public bool isFiring = false;
     bool isPlaying = false;
     public bool isMoving;
     private bool movingBack = false;
