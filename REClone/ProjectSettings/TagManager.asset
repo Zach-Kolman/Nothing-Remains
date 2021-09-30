@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Mob
   - debug
+  - MapTrigger
+  - MapTriggerMedieval
+  - MapTriggerModern
   layers:
   - Default
   - TransparentFX

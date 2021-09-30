@@ -19,7 +19,7 @@ public class CamSwitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hi");
+        //Debug.Log("hi");
         foreach (var cam in Camera.allCameras)
         {
             cam.enabled = false;
@@ -28,6 +28,6 @@ public class CamSwitch : MonoBehaviour
         Camera myCam = curCam;
 
         myCam.enabled = true;
-        Debug.Log("ey");
+        //Debug.Log("ey");
     }
 }

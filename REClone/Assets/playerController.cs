@@ -91,7 +91,7 @@ public class playerController : MonoBehaviour
             }
         }
 
-        Debug.Log(tMin);
+        //Debug.Log(tMin);
         return tMin;
         
     }
@@ -189,7 +189,7 @@ public class playerController : MonoBehaviour
 
         rb.Move(vel * Time.deltaTime);
 
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
         animator.SetBool("isWalking", isWalking);
 
@@ -243,7 +243,7 @@ public class playerController : MonoBehaviour
             isSprinting = false;
         }
 
-        Debug.Log(isMoving);
+        //Debug.Log(isMoving);
     }
 
     public void Footstep1()
