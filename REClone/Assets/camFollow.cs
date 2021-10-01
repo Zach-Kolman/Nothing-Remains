@@ -5,6 +5,7 @@ using UnityEngine;
 public class camFollow : MonoBehaviour
 {
     private Transform player;
+    public bool doesFollow = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,9 @@ public class camFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player);
+        if(doesFollow)
+        {
+           transform.LookAt(player);
+        }
     }
 }
