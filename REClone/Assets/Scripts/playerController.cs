@@ -36,6 +36,7 @@ public class playerController : MonoBehaviour
 
     public Transform closestMob;
 
+    int layerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -129,18 +130,22 @@ public class playerController : MonoBehaviour
     void Fire()
     {
         StartCoroutine("SetPlaying");
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        {
+            
+            print("hit enemy");
+            closestMob.GetComponent<EnemyBase>().gotShot = true;
+        }
         if (startPlaying)
         {
             source.clip = fireSound;
             source.PlayOneShot(fireSound, gunshotVolumeScale);
             turnSpeed = 0;
-            int layerMask = 1 << 8;
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
-            {
-                print("hit enemy");
-                closestMob.gameObject.GetComponent<EnemyBase>().gotShot = true;
-            }
+            
+         
+            layerMask = LayerMask.GetMask("Enemy");
+            
         }
        
     }
