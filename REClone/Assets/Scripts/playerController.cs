@@ -39,6 +39,8 @@ public class playerController : MonoBehaviour
     public bool inSight = false;
 
     GameObject shootCheckBox;
+
+    public bool hasTurned = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -179,6 +181,8 @@ public class playerController : MonoBehaviour
 
         CheckIfBack();
 
+        StartCoroutine("TurnAround");
+
         //Fire();
 
         transform.Rotate(0, Input.GetAxis("Horizontal") * turnSpeed * Time.deltaTime, 0);
@@ -282,5 +286,19 @@ public class playerController : MonoBehaviour
         }
     }
 
+    IEnumerator TurnAround()
+    {
+        if(movingBack && isSprinting)
+        {
+            if(!hasTurned)
+            {
+                hasTurned = true;
+                transform.Rotate(Vector3.up, 180);
+                yield return new WaitForSeconds(2);
+                hasTurned = false;
+            }
 
+        }
+        
+    }
 }
