@@ -72,9 +72,10 @@
     <Compile Include="Assets\Scripts\GameEvents.cs" />
     <Compile Include="Assets\ChasePlayer.cs" />
     <Compile Include="Assets\Scripts\CheckMobsInRange.cs" />
+    <Compile Include="Assets\HealthDamageChecker.cs" />
     <Compile Include="Assets\Scripts\CheckForOtherMap.cs" />
     <Compile Include="Assets\CheckNMAVel.cs" />
-    <Compile Include="Assets\HealthDamageChecker.cs" />
+    <Compile Include="Assets\PortalSwirl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
