@@ -8,10 +8,13 @@ public class EnemyBase : MonoBehaviour
     public float curHealth;
 
     public bool gotShot = false;
+
+    GameObject player;
     // Start is called before the first frame update
     void Awake()
     {
         curHealth = maxHealth;
+        player = GameObject.FindGameObjectWithTag("Player").gameObject;
     }
 
     // Update is called once per frame
@@ -36,6 +39,7 @@ public class EnemyBase : MonoBehaviour
         if(curHealth <= 0)
         {
             gameObject.SetActive(false);
+            player.GetComponent<playerController>().mobs.Remove(gameObject.GetComponent<playerController>().GetClosestEnemy().gameObject.GetComponent<Collider>());
         }
        
     }

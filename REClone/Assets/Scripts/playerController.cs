@@ -36,7 +36,9 @@ public class playerController : MonoBehaviour
 
     public Transform closestMob;
 
-    int layerMask;
+    public bool inSight = false;
+
+    GameObject shootCheckBox;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +53,7 @@ public class playerController : MonoBehaviour
 
         source = gameObject.GetComponent<AudioSource>();
 
-        
+        shootCheckBox = gameObject.transform.GetChild(8).gameObject;
     }
 
     void AimDown()
@@ -66,6 +68,7 @@ public class playerController : MonoBehaviour
             speed = 0;
             turnSpeed = 0;
             movingBack = false;
+            shootCheckBox.SetActive(true);
             
         }
 
@@ -73,6 +76,7 @@ public class playerController : MonoBehaviour
         {
             speed = 2;
             turnSpeed = 45;
+            shootCheckBox.SetActive(false);
         }
 
        
@@ -131,23 +135,21 @@ public class playerController : MonoBehaviour
     {
         StartCoroutine("SetPlaying");
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
+        if (inSight)
         {
-            
             print("hit enemy");
             closestMob.GetComponent<EnemyBase>().gotShot = true;
         }
+
+
+
         if (startPlaying)
         {
             source.clip = fireSound;
             source.PlayOneShot(fireSound, gunshotVolumeScale);
             turnSpeed = 0;
-            
-         
-            layerMask = LayerMask.GetMask("Enemy");
-            
         }
-       
+
     }
 
    

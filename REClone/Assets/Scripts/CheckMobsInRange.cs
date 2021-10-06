@@ -7,6 +7,7 @@ public class CheckMobsInRange : MonoBehaviour
 
     public List<Collider> mobsInRange;
 
+    public GameObject curEnemy;
     public List<Collider> GetColliders()
     {
         return mobsInRange;
@@ -20,14 +21,19 @@ public class CheckMobsInRange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(curEnemy.GetComponent<EnemyBase>().curHealth <= 0)
+        {
+            mobsInRange.Remove(curEnemy.GetComponent<Collider>());
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        
         if(!mobsInRange.Contains(other) && other.tag == "Mob")
         {
             mobsInRange.Add(other);
+            curEnemy = other.gameObject;
         }
     }
 
@@ -36,6 +42,9 @@ public class CheckMobsInRange : MonoBehaviour
         if (mobsInRange.Contains(other) && other.tag == "Mob")
         {
             mobsInRange.Remove(other);
+            curEnemy = null;
         }
     }
+
+    
 }
