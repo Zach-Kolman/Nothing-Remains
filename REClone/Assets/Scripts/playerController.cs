@@ -136,8 +136,7 @@ public class playerController : MonoBehaviour
     void Fire()
     {
         StartCoroutine("SetPlaying");
-        RaycastHit hit;
-        if (inSight)
+        if (inSight && closestMob != null)
         {
             print("hit enemy");
             closestMob.GetComponent<EnemyBase>().gotShot = true;

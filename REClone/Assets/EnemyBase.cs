@@ -74,7 +74,6 @@ public class EnemyBase : MonoBehaviour
         if(curHealth <= 0)
         {
             transform.parent.gameObject.SetActive(false);
-            player.GetComponent<playerController>().mobs.Remove(gameObject.GetComponent<playerController>().GetClosestEnemy().gameObject.GetComponent<Collider>());
         }
        
     }

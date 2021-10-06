@@ -21,9 +21,12 @@ public class CheckMobsInRange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(curEnemy.GetComponent<EnemyBase>().curHealth <= 0)
+        if (curEnemy != null)
         {
-            mobsInRange.Remove(curEnemy.GetComponent<Collider>());
+            if (curEnemy.GetComponent<EnemyBase>().curHealth <= 0)
+            {
+                mobsInRange.Remove(curEnemy.GetComponent<Collider>());
+            }
         }
     }
 

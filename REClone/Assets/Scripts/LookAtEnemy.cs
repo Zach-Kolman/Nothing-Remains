@@ -5,29 +5,33 @@ using UnityEngine;
 public class LookAtEnemy : MonoBehaviour
 {
 
-    public Transform closestMob;
-
     Quaternion LookAtRotY;
 
     public float stepCount = 90f;
+
+    Transform closestMob;
     // Start is called before the first frame update
     void Start()
     {
-        closestMob = null;
+        closestMob = gameObject.GetComponent<playerController>().GetClosestEnemy();
     }
 
     // Update is called once per frame
     void Update()
     {
         closestMob = gameObject.GetComponent<playerController>().GetClosestEnemy();
+        if (closestMob != null)
+        {
+            closestMob = gameObject.GetComponent<playerController>().GetClosestEnemy();
 
-        Vector3 relPos = closestMob.position - transform.position;
+            Vector3 relPos = closestMob.position - transform.position;
 
-        Quaternion lookAtRot = Quaternion.LookRotation(relPos);
+            Quaternion lookAtRot = Quaternion.LookRotation(relPos);
 
-        LookAtRotY = Quaternion.Euler(transform.eulerAngles.x, lookAtRot.eulerAngles.y, transform.eulerAngles.z);
+            LookAtRotY = Quaternion.Euler(transform.eulerAngles.x, lookAtRot.eulerAngles.y, transform.eulerAngles.z);
 
-        Debug.DrawRay(transform.position, relPos, Color.green);
+            Debug.DrawRay(transform.position, relPos, Color.green);
+        }
     }
 
     public void lookAtMob()

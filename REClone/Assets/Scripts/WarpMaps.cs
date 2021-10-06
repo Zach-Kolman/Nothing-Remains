@@ -25,19 +25,21 @@ public class WarpMaps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(WarpMap());
-        
-        warpButtonPressed = Input.GetButton("Warp");
-
-        if (warpButtonPressed && !warpBlocked)
+        if(mapToJumpTo != null)
         {
-         
-              warpTimer -= Time.deltaTime;
-              print("hiiiiiiiiiiiiiiiiii");
-           
-        }
+            StartCoroutine(WarpMap());
 
-        
+            warpButtonPressed = Input.GetButton("Warp");
+
+            if (warpButtonPressed && !warpBlocked)
+            {
+
+                warpTimer -= Time.deltaTime;
+                print("hiiiiiiiiiiiiiiiiii");
+
+            }
+
+        }
     }
 
     IEnumerator WarpMap()
