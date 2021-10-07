@@ -160,6 +160,7 @@ public class playerController : MonoBehaviour
     void Update()
     {
         closestMob = GetClosestEnemy();
+
         mobs = GetComponentInChildren<CheckMobsInRange>().mobsInRange;
 
         isAiming = Input.GetButton("Aim");

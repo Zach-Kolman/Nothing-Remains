@@ -11,20 +11,13 @@ public class EnemyBase : MonoBehaviour
     GameObject player;
     private float poseSpeed;
     private Animator anim;
-    //private NavMeshAgent agent;
-    //private Vector3 prevAgentPos;
+    private NavMeshAgent agent;
+    private Vector3 prevAgentPos;
     private float parentSpeed = 0;
     public float distanceFromPlayer;
     private float playerDist;
-    public enum distState
-    {
-        Wandering,
-        Chasing,
-        Attacking,
-    }
-    public distState curState;
+    public string stateText;
 
-   
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +25,11 @@ public class EnemyBase : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         poseSpeed = 0;
         anim = GetComponent<Animator>();
-       //agent = transform.parent.GetComponent<NavMeshAgent>();
+        agent = gameObject.GetComponent<NavMeshAgent>();
         curHealth = maxHealth;
-        //GetDistanceFromPlayer();
+        distanceFromPlayer = playerDist;
+        GetDistanceFromPlayer();
+        SwitchStates();
     }
 
     // Update is called once per frame
@@ -42,11 +37,11 @@ public class EnemyBase : MonoBehaviour
     {
         //print("PlayerDist is: " + playerDist);
         distanceFromPlayer = playerDist;
-        SwitchStates();
-        //SetStates();
         takeDamage();
-        StartCoroutine("die");
+        die();
+        SwitchStates();
         GetDistanceFromPlayer();
+        
     }
 
     private void FixedUpdate()
@@ -59,7 +54,7 @@ public class EnemyBase : MonoBehaviour
     {
         if(gotShot)
         {
-            StartCoroutine("PlayHitAnim");
+            //StartCoroutine("PlayHitAnim");
             print("ow");
             curHealth = curHealth - 8;
             gotShot = false;
@@ -69,23 +64,22 @@ public class EnemyBase : MonoBehaviour
 
     IEnumerator PlayHitAnim()
     {
-        transform.parent.GetComponent<NavMeshAgent>().speed = 0;
+        gameObject.GetComponent<NavMeshAgent>().speed = 0;
         poseSpeed = 1;
         yield return new WaitForSeconds(1);
-        
-            transform.parent.GetComponent<NavMeshAgent>().speed = 1;
-            poseSpeed = 0.5f;
+        gameObject.GetComponent<NavMeshAgent>().speed = 1;
+        poseSpeed = 0.5f;
+        print("booba");
         
 
        
     }
 
-    IEnumerator die()
+    void die()
     {
-        yield return new WaitForSeconds(1);
         if(curHealth <= 0)
         {
-            transform.parent.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
        
     }
@@ -97,43 +91,31 @@ public class EnemyBase : MonoBehaviour
 
     void SwitchStates()
     {
-        if(playerDist <= 2.5)
+        if(playerDist <= 3)
         {
-            print("take that scum");
+            gameObject.GetComponent<ChasePlayer>().isWandering = false;
+            gameObject.GetComponent<ChasePlayer>().isChasing = false;
+            gameObject.GetComponent<FacePlayer>().isFacing = true;
         }
 
         if(playerDist <= 10)
         {
-            print("run bish");
+            gameObject.GetComponent<ChasePlayer>().isChasing = true;
+            gameObject.GetComponent<FacePlayer>().isFacing = true;
+            gameObject.GetComponent<ChasePlayer>().isWandering = false;
         }
 
-        if(playerDist > 14)
+        if (playerDist >= 11)
         {
-            gameObject.transform.parent.GetComponent<ChasePlayer>().WanderAround();
-            print("poopy wandering");
+            gameObject.GetComponent<ChasePlayer>().isWandering = true;
+            gameObject.GetComponent<ChasePlayer>().isChasing = false;
+            gameObject.GetComponent<FacePlayer>().isFacing = false;
         }
     }
 
-    void ChasePlayer()
-    {
-        gameObject.GetComponent<ChasePlayer>().ChaseThePlayer();
-    }
-
-    //void SetStates()
+    //void ChasePlayer()
     //{
-    //    if(playerDist <= 2)
-    //    {
-    //        curState = distState.Attacking;
-    //    }
-
-    //    if (playerDist <= 7)
-    //    {
-    //        curState = distState.Chasing;
-    //    }
-
-    //    if (playerDist > 7)
-    //    {
-    //        curState = distState.Wandering;
-    //    }
+    //    gameObject.GetComponent<ChasePlayer>().ChaseThePlayer();
+    //    gameObject.GetComponent<FacePlayer>().isFacing = true;
     //}
 }
