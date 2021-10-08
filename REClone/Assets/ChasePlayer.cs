@@ -12,13 +12,15 @@ public class ChasePlayer : MonoBehaviour
     public bool isChasing = false;
     public GameObject chasePoint;
     public bool seekSpotFired = false;
+    public bool isAttacking = false;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,12 +38,27 @@ public class ChasePlayer : MonoBehaviour
         {
             ChaseThePlayer();
         }
+
+        if(isAttacking)
+        {
+            Attak();
+        }
+
+
+        anim.SetBool("isWandering", isWandering);
+        anim.SetBool("isChasing", isChasing);
+        anim.SetBool("isAttacking", isAttacking);
     }
 
     public void ChaseThePlayer()
     {
         agent.speed = 1;
         agent.destination = player.transform.position;
+    }
+
+    public void Attak()
+    {
+        agent.speed = 0;
     }
 
     public IEnumerator WanderAround()

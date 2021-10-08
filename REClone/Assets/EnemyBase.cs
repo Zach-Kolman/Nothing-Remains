@@ -47,7 +47,7 @@ public class EnemyBase : MonoBehaviour
     private void FixedUpdate()
     {
         parentSpeed = transform.parent.GetComponent<CheckNMAVel>().velly;
-        anim.SetFloat("PoseSpeed", value: poseSpeed);
+        anim.SetFloat("PoseSpeed", poseSpeed);
     }
 
     public void takeDamage()
@@ -93,20 +93,24 @@ public class EnemyBase : MonoBehaviour
     {
         if(playerDist <= 3)
         {
+            gameObject.GetComponent<ChasePlayer>().isAttacking = true;
             gameObject.GetComponent<ChasePlayer>().isWandering = false;
             gameObject.GetComponent<ChasePlayer>().isChasing = false;
             gameObject.GetComponent<FacePlayer>().isFacing = true;
         }
+        
 
-        if(playerDist <= 10)
+        else if(playerDist <= 10)
         {
+            gameObject.GetComponent<ChasePlayer>().isAttacking = false;
             gameObject.GetComponent<ChasePlayer>().isChasing = true;
             gameObject.GetComponent<FacePlayer>().isFacing = true;
             gameObject.GetComponent<ChasePlayer>().isWandering = false;
         }
 
-        if (playerDist >= 11)
+        else if (playerDist >= 11)
         {
+            gameObject.GetComponent<ChasePlayer>().isAttacking = false;
             gameObject.GetComponent<ChasePlayer>().isWandering = true;
             gameObject.GetComponent<ChasePlayer>().isChasing = false;
             gameObject.GetComponent<FacePlayer>().isFacing = false;
