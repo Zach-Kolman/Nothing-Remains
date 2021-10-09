@@ -24,7 +24,7 @@ public class playerController : MonoBehaviour
     bool isPlaying = false;
     public bool isMoving;
     private bool movingBack = false;
-    bool startPlaying = false;
+    public bool startPlaying = false;
 
     private AudioSource source;
 
@@ -49,11 +49,11 @@ public class playerController : MonoBehaviour
 
         sprintSpeed = 3.5f;
 
-        rb = GetComponent<CharacterController>();
+        rb = gameObject.GetComponent<CharacterController>();
 
-        animator = GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
 
-        source = gameObject.GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
 
         shootCheckBox = gameObject.transform.GetChild(8).gameObject;
     }
@@ -135,6 +135,7 @@ public class playerController : MonoBehaviour
     }
     void Fire()
     {
+        print("god help me");
         StartCoroutine("SetPlaying");
         if (inSight && closestMob != null)
         {

@@ -6,12 +6,13 @@ public class CheckForOtherMap : MonoBehaviour
 {
     public GameObject upChecker;
     public GameObject downChecker;
-    public GameObject curFloorOn;
+    private GameObject curFloorOn;
     public GameObject otherFloor;
     // Start is called before the first frame update
     void Start()
     {
         otherFloor = null;
+        curFloorOn = null; 
     }
 
     // Update is called once per frame
