@@ -301,4 +301,9 @@ public class playerController : MonoBehaviour
         }
         
     }
+
+    void die()
+    {
+        
+    }
 }

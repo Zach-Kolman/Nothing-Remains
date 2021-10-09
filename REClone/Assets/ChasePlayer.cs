@@ -14,7 +14,8 @@ public class ChasePlayer : MonoBehaviour
     public bool seekSpotFired = false;
     public bool isAttacking = false;
     private Animator anim;
-
+    public GameObject weapon;
+    public bool gotDamage = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +60,10 @@ public class ChasePlayer : MonoBehaviour
     public void Attak()
     {
         agent.speed = 0;
+        if(gotDamage)
+        {
+            player.GetComponent<HealthDamageChecker>().curHealth -= 1;
+        }
     }
 
     public IEnumerator WanderAround()

@@ -11,9 +11,9 @@ public class EnemyBase : MonoBehaviour
     GameObject player;
     private float poseSpeed;
     private Animator anim;
-    private NavMeshAgent agent;
-    private Vector3 prevAgentPos;
-    private float parentSpeed = 0;
+    //private NavMeshAgent agent;
+    //private Vector3 prevAgentPos;
+    //private float parentSpeed = 0;
     public float distanceFromPlayer;
     private float playerDist;
     public string stateText;
@@ -25,7 +25,7 @@ public class EnemyBase : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         poseSpeed = 0;
         anim = GetComponent<Animator>();
-        agent = gameObject.GetComponent<NavMeshAgent>();
+        //agent = gameObject.GetComponent<NavMeshAgent>();
         curHealth = maxHealth;
         distanceFromPlayer = playerDist;
         GetDistanceFromPlayer();
@@ -46,7 +46,7 @@ public class EnemyBase : MonoBehaviour
 
     private void FixedUpdate()
     {
-        parentSpeed = transform.parent.GetComponent<CheckNMAVel>().velly;
+        //parentSpeed = transform.parent.GetComponent<CheckNMAVel>().velly;
         anim.SetFloat("PoseSpeed", poseSpeed);
     }
 
@@ -91,7 +91,7 @@ public class EnemyBase : MonoBehaviour
 
     void SwitchStates()
     {
-        if(playerDist <= 3)
+        if(playerDist <= 2.25)
         {
             gameObject.GetComponent<ChasePlayer>().isAttacking = true;
             gameObject.GetComponent<ChasePlayer>().isWandering = false;

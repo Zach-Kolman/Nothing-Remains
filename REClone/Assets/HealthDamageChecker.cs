@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +15,15 @@ public class HealthDamageChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        die();
+    }
+
+    void die()
+    {
+        if(curHealth <= 0)
+        {
+            print("i die (╯ ͡❛ ͜ʖ ͡❛)╯┻━┻");
+            gameObject.SetActive(false);
+        }
     }
 }
