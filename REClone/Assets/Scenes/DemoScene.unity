@@ -12048,6 +12048,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407751192}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &427977628 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2412161367050800168, guid: b0dfe03014224dc43b5454e1a30809cd, type: 3}
+  m_PrefabInstance: {fileID: 526209763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &437278450
 GameObject:
   m_ObjectHideFlags: 0
@@ -19884,6 +19889,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 285d5586a77d5b54abc49040cae376df, type: 3}
   m_PrefabInstance: {fileID: 1527331096}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1488712037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 427977628}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 255.88062
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 255.88074
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 255.8807
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.404
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.398
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.73817235
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.10444884
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.13177007
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6533212
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 19.049
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -3.522
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 82.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
+      propertyPath: m_Name
+      value: Beestohl
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 274b27f92e586da41ad9b7c10922674e, type: 3}
 --- !u!1 &1509517589
 GameObject:
   m_ObjectHideFlags: 0
@@ -23762,7 +23836,7 @@ MonoBehaviour:
   gravity: 9.8
   sprintSpeed: 0
   fireSpeed: 0
-  gunshotVolumeScale: 3.2
+  gunshotVolumeScale: 0.21
   animator: {fileID: 0}
   isAiming: 0
   isFiring: 0

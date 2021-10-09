@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -4791504522942941401
     second: PistolIdle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: IDKHorror_Soldier.001
+    second: {fileID: 2100000, guid: 950fd3e90087c7e4493177ff6744e0db, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

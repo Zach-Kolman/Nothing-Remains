@@ -45,7 +45,7 @@ public class camFollowandPan : MonoBehaviour
         }
 
         camPan();
-        Debug.Log(direction);
+        //Debug.Log(direction);
     }
 
     void CamFollow()
