@@ -25,6 +25,7 @@ public class playerController : MonoBehaviour
     public bool isMoving;
     private bool movingBack = false;
     public bool startPlaying = false;
+    public bool isReloading = false;
 
     private AudioSource source;
 
@@ -126,7 +127,7 @@ public class playerController : MonoBehaviour
     {
         startPlaying = true;
         isPlaying = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         isPlaying = false;
         startPlaying = false;
         turnSpeed = 45;
@@ -135,7 +136,7 @@ public class playerController : MonoBehaviour
     }
     void Fire()
     {
-        print("god help me");
+
         StartCoroutine("SetPlaying");
         if (inSight && closestMob != null)
         {
@@ -147,15 +148,17 @@ public class playerController : MonoBehaviour
 
         if (startPlaying)
         {
-            source.clip = fireSound;
-            source.PlayOneShot(fireSound, gunshotVolumeScale);
-            turnSpeed = 0;
+           
+            {
+                source.clip = fireSound;
+                source.PlayOneShot(fireSound, gunshotVolumeScale);
+                gameObject.GetComponent<AmmoHandler>().curAmmo -= 1;
+                turnSpeed = 0;
+            }
         }
 
     }
 
-   
-    
 
     // Update is called once per frame
     void Update()
@@ -166,9 +169,15 @@ public class playerController : MonoBehaviour
 
         isAiming = Input.GetButton("Aim");
 
-        isSprinting = Input.GetButton("Sprint");
+        isReloading = Input.GetButtonDown("Reload");
 
-        isFiring = Input.GetButtonDown("FireMain");
+        isSprinting = Input.GetButton("Sprint");
+        if (gameObject.GetComponent<AmmoHandler>().curAmmo > 0)
+        {
+            isFiring = Input.GetButtonDown("FireMain");
+        }
+
+        
 
         vSpeed = gravity * Time.deltaTime;
 
@@ -183,6 +192,8 @@ public class playerController : MonoBehaviour
         CheckIfBack();
 
         StartCoroutine("TurnAround");
+
+        Reload();
 
         //Fire();
 
@@ -303,8 +314,11 @@ public class playerController : MonoBehaviour
         
     }
 
-    void die()
+    void Reload()
     {
-        
+        if(isReloading)
+        {
+            gameObject.GetComponent<AmmoHandler>().Reload();
+        }
     }
 }

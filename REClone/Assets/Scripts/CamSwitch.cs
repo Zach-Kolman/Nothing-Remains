@@ -19,15 +19,18 @@ public class CamSwitch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("hi");
-        foreach (var cam in Camera.allCameras)
+        if(other.tag == "Player")
         {
-            cam.enabled = false;
+            //Debug.Log("hi");
+            foreach (var cam in Camera.allCameras)
+            {
+                cam.enabled = false;
+            }
+
+            Camera myCam = curCam;
+
+            myCam.enabled = true;
+            //Debug.Log("ey");
         }
-
-        Camera myCam = curCam;
-
-        myCam.enabled = true;
-        //Debug.Log("ey");
     }
 }

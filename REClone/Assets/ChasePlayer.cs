@@ -53,8 +53,11 @@ public class ChasePlayer : MonoBehaviour
 
     public void ChaseThePlayer()
     {
-        agent.speed = 1;
-        agent.destination = player.transform.position;
+        if(!gameObject.GetComponent<EnemyBase>().wasHit)
+        {
+            agent.speed = 1;
+            agent.destination = player.transform.position;
+        }
     }
 
     public void Attak()
@@ -62,6 +65,7 @@ public class ChasePlayer : MonoBehaviour
         agent.speed = 0;
         if(gotDamage)
         {
+            //gameObject.GetComponent<EnemyBase>().StartCoroutine("PlayAttackAnim");
             player.GetComponent<HealthDamageChecker>().curHealth -= 1;
         }
     }
@@ -69,7 +73,6 @@ public class ChasePlayer : MonoBehaviour
     public IEnumerator WanderAround()
     {
         seekSpotFired = true;
-        agent.speed = 1;
         chasePoint.transform.position = RandomPointInBounds(randoChecker.GetComponent<Collider>().bounds);
         agent.destination = chasePoint.transform.position;
         print("pizza pie");

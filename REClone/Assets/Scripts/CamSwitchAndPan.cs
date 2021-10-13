@@ -21,23 +21,28 @@ public class CamSwitchAndPan : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        inRange = true;
-
-        if (inRange)
+        if (other.tag == "Player")
         {
-            mamaCam.GetComponent<camFollowandPan>().inFollowRange = true;
-            mamaCam.GetComponent<camFollowandPan>().setDist();
-        }
+            inRange = true;
 
+            if (inRange)
+            {
+                mamaCam.GetComponent<camFollowandPan>().inFollowRange = true;
+                mamaCam.GetComponent<camFollowandPan>().setDist();
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        inRange = false;
-
-        if (!inRange)
+        if(other.tag == "Player")
         {
-            mamaCam.GetComponent<camFollowandPan>().inFollowRange = false;
+            inRange = false;
+
+            if (!inRange)
+            {
+                mamaCam.GetComponent<camFollowandPan>().inFollowRange = false;
+            }
         }
     }
 }

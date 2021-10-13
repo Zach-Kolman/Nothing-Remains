@@ -34,6 +34,7 @@ public class camFollowandPan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        offsetPos = gameObject.transform;
         camPan();
     }
 
