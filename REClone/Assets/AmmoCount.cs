@@ -30,4 +30,6 @@ public class AmmoCount : MonoBehaviour
         curText.text = currentAmmo.ToString();
         stashText.text = stashAmmo.ToString();
     }
+
+
 }

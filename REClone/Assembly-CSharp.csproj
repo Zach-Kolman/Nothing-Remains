@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
     <Compile Include="Assets\AmmoHandler.cs" />
     <Compile Include="Assets\Scripts\WarpMaps.cs" />
+    <Compile Include="Assets\AmmoCount.cs" />
     <Compile Include="Assets\Scripts\NPCBase.cs" />
     <Compile Include="Assets\Scripts\camFollowandPan.cs" />
     <Compile Include="Assets\EnemyBase.cs" />
@@ -80,7 +81,7 @@
     <Compile Include="Assets\PortalSwirl.cs" />
     <Compile Include="Assets\Dialogue.cs" />
     <Compile Include="Assets\CheckNMAVel.cs" />
-    <Compile Include="Assets\AmmoCount.cs" />
+    <Compile Include="Assets\FaceScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
