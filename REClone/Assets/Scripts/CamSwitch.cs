@@ -5,6 +5,7 @@ using UnityEngine;
 public class CamSwitch : MonoBehaviour
 {
     public Camera curCam;
+    public GameObject enableIt;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class CamSwitch : MonoBehaviour
         if(other.tag == "Player")
         {
             //Debug.Log("hi");
+            //enableIt.SetActive(true);
             foreach (var cam in Camera.allCameras)
             {
                 cam.enabled = false;
