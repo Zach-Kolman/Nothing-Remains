@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class TitleCamController : MonoBehaviour
@@ -28,5 +29,10 @@ public class TitleCamController : MonoBehaviour
     {
         animator.SetBool("PlayWasHit", false);
         animator.SetBool("BackWasHit", true);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

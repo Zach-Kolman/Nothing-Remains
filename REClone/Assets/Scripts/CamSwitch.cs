@@ -6,6 +6,7 @@ public class CamSwitch : MonoBehaviour
 {
     public Camera curCam;
     public GameObject enableIt;
+    public AudioListener listener;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,7 @@ public class CamSwitch : MonoBehaviour
             Camera myCam = curCam;
 
             myCam.enabled = true;
+            listener.transform.position = myCam.transform.position;
             //Debug.Log("ey");
         }
     }

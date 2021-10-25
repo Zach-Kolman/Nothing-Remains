@@ -10,13 +10,13 @@ public class StartDialogue : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         inRange = true;
-        player.transform.GetChild(10).gameObject.SetActive(true);
+        player.transform.GetChild(20).gameObject.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         inRange = false;
-        player.transform.GetChild(10).gameObject.SetActive(false);
+        player.transform.GetChild(20).gameObject.SetActive(false);
         FindObjectOfType<DialogueManager>().EndDialogue();
     }
 

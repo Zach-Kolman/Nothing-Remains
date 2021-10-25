@@ -3335,13 +3335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885b2a7a37daacd4d8b859b57fdadfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data:
-    level: 1
-    exp: 1.01
-    strength: 109
-    health: 72
-    speed: 35
-  dataFile: data.dat
 --- !u!4 &1484677451
 Transform:
   m_ObjectHideFlags: 0
@@ -3437,7 +3430,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1516775657}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 420218330}
+        m_TargetAssemblyTypeName: TitleCamController, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1516775657
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curCam: {fileID: 842726568994319355}
   enableIt: {fileID: 842726568994319357}
+  listener: {fileID: 8355107266857556696, guid: 2bc5ac2e7866e864298c0eb8be5113fd, type: 3}
 --- !u!23 &6896474866145971285
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -122,8 +123,6 @@ GameObject:
   - component: {fileID: 842726568994319355}
   - component: {fileID: 842726568994319353}
   - component: {fileID: 1128664680681514666}
-  - component: {fileID: 5136017032550765590}
-  - component: {fileID: 226409109950378910}
   m_Layer: 0
   m_Name: SwitchableCamera
   m_TagString: MainCamera
@@ -237,37 +236,6 @@ MonoBehaviour:
   offset: 0
   inFollowRange: 0
   doesFollow: 0
---- !u!81 &5136017032550765590
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842726568994319357}
-  m_Enabled: 0
---- !u!164 &226409109950378910
-AudioReverbFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842726568994319357}
-  m_Enabled: 1
-  m_DryLevel: 0
-  m_Room: -1000
-  m_RoomHF: -500
-  m_DecayTime: 3.92
-  m_DecayHFRatio: 0.7
-  m_ReflectionsLevel: -1230
-  m_ReverbLevel: -2
-  m_ReverbDelay: 0.029
-  m_Diffusion: 100
-  m_Density: 100
-  m_HFReference: 5000
-  m_RoomLF: 0
-  m_LFReference: 250
-  m_ReflectionsDelay: 0
-  m_ReverbPreset: 8
 --- !u!1 &4399094638989946885
 GameObject:
   m_ObjectHideFlags: 0
