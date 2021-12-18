@@ -54,6 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\SaveData.cs" />
+    <Compile Include="Assets\Object2Terrain.cs" />
     <Compile Include="Assets\Scripts\FacePlayer.cs" />
     <Compile Include="Assets\Scripts\JSONSerializer.cs" />
     <Compile Include="Assets\Serializtion\SerializationManager.cs" />
@@ -101,7 +102,7 @@
     <Compile Include="Assets\Scripts\Vector3SerializationSurrogate.cs" />
     <Compile Include="Assets\TitleCamController.cs" />
     <Compile Include="Assets\Scripts\CheckNMAVel.cs" />
-    <Compile Include="Assets\Object2Terrain.cs" />
+    <Compile Include="Assets\FindPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Samples\Terrain Tools\0.1.0-preview\Terrain Assets\ThirdPartyNotices.txt" />
